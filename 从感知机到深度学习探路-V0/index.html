@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Tag: Python - 木头的进化史</title>
+<title>从感知机到深度学习探路 - 木头的进化史</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="科技、iOS、Mac、视频、文博、金融">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木头的进化史">
-<meta property="og:url" content="http://mutongfan.club/tags/Python/index.html">
+    <meta name="description" content="一、揭开 AI &amp;amp; ML &amp;amp; DL 的神秘面纱1、引子人工智能（AI:Artificial intelligence）广为大家所知，基本源自于AlphaGo一次又一次的击败了人类。在AlphaGo击败人类之前，IBM的深蓝也曾经有过类似的壮举，只不过它所依赖的是暴力搜索——通过穷举下棋方式的方法战胜人类棋手。  围棋的下子方法复杂度高达10的172次方，比之国际象棋的10的46次方">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从感知机到深度学习探路">
+<meta property="og:url" content="http://mutongfan.club/从感知机到深度学习探路-V0/index.html">
 <meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="一、揭开 AI &amp;amp; ML &amp;amp; DL 的神秘面纱1、引子人工智能（AI:Artificial intelligence）广为大家所知，基本源自于AlphaGo一次又一次的击败了人类。在AlphaGo击败人类之前，IBM的深蓝也曾经有过类似的壮举，只不过它所依赖的是暴力搜索——通过穷举下棋方式的方法战胜人类棋手。  围棋的下子方法复杂度高达10的172次方，比之国际象棋的10的46次方">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://mutongfan.club/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-14T10:30:44.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木头的进化史">
+<meta name="twitter:title" content="从感知机到深度学习探路">
+<meta name="twitter:description" content="一、揭开 AI &amp;amp; ML &amp;amp; DL 的神秘面纱1、引子人工智能（AI:Artificial intelligence）广为大家所知，基本源自于AlphaGo一次又一次的击败了人类。在AlphaGo击败人类之前，IBM的深蓝也曾经有过类似的壮举，只不过它所依赖的是暴力搜索——通过穷举下棋方式的方法战胜人类棋手。  围棋的下子方法复杂度高达10的172次方，比之国际象棋的10的46次方">
 <meta name="twitter:image" content="http://mutongfan.club/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                <img src="/images/logo.svg" alt="从感知机到深度学习探路" height="28">
             
             </a>
         </div>
@@ -136,33 +140,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Python</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-11-27T07:30:20.000Z">2017-11-27</time>
+                <time class="level-item has-text-grey" datetime="2017-12-29T00:41:50.000Z">2017-12-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Python系列/">Python系列</a>
+                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 547 words)
+                    7 minutes read (About 1110 words)
                 </span>
                 
                 
@@ -171,36 +164,54 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/python学习实例记录/">python学习实例记录</a>
+                从感知机到深度学习探路
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>前言：尽管只用对着书本敲代码，都险些中断了这个python实例的练习。终于，完成。</p>
+            <h1 id="一、揭开-AI-amp-ML-amp-DL-的神秘面纱"><a href="#一、揭开-AI-amp-ML-amp-DL-的神秘面纱" class="headerlink" title="一、揭开 AI &amp; ML &amp; DL 的神秘面纱"></a>一、揭开 AI &amp; ML &amp; DL 的神秘面纱</h1><h2 id="1、引子"><a href="#1、引子" class="headerlink" title="1、引子"></a>1、引子</h2><p>人工智能<em>（AI:Artificial intelligence）</em>广为大家所知，基本源自于AlphaGo一次又一次的击败了人类。在AlphaGo击败人类之前，IBM的深蓝也曾经有过类似的壮举，只不过它所依赖的是<strong>暴力搜索</strong>——通过穷举下棋方式的方法战胜人类棋手。</p>
+<blockquote>
+<p>围棋的下子方法复杂度高达<strong>10的172次方</strong>，比之国际象棋的<strong>10的46次方</strong>远远呈指数级的复杂。</p>
 </blockquote>
-<p><strong>1.游戏</strong></p>
-<p><strong>“打飞机”</strong>这个实例完全是照着书本进行，除了出现过两三次由于粗心抄错了字母这样的情况，整个项目手打下来并没有遇到奇怪的问题。而且，跟着书本进行，也没有不能理解的地方。特别值得一提的是，一定要根着书本的进程敲代码，不要直接下载资源跑源码。</p>
-<p>跟着书本进行，作者会引导着如何重构代码，更能深入的体会到面向对象的编程以及养成良好的编码习惯——注释、命名和抽象方法等。</p>
-<p>而关于游戏的实现，则主要是依赖<code>pygame</code>这个第三方库的使用。</p>
+<p>而AlphaGo则更为智能，凭借估值网络和走棋网络<em>（均是通过深度学习实现）</em>构成的大脑，预测对手的下子并进行自我对弈训练，战胜人类真的是一开始就注定的。</p>
+<a id="more"></a>
+
+<h2 id="2、那么，AI-是什么？"><a href="#2、那么，AI-是什么？" class="headerlink" title="2、那么，AI 是什么？"></a>2、那么，AI 是什么？</h2><p>在引子中提到的AlphoGo就是一个AI,深蓝也是一个AI。在维基百科上给出的计算机科学领域定义是：</p>
+<blockquote>
+<p>Any device that perceives its environment and takes actions that maximize its chance of success at some goal.</p>
+</blockquote>
+<p>综合这段时间所看的一些资料，和自己的感悟。私认为，AI，是通过如ML(Machine Learning),DL(Deep Learning)这样的一些工具（手段），造出的解决人类本身可以解决但是由它来做可以更高效的一个产品。</p>
+<h2 id="3、ML-amp-DL-又是什么？"><a href="#3、ML-amp-DL-又是什么？" class="headerlink" title="3、ML &amp; DL 又是什么？"></a>3、ML &amp; DL 又是什么？</h2><p>Mitchell 在1997年的时候，就给出了机器学习的定义，在吴恩达的机器学习课程和周志华的机器学习一书中都引用了该定义：</p>
+<blockquote>
+<p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.——by Tom Mitchell</p>
+</blockquote>
+<p>为了不给大家造成混乱，此处就不援引其他定义，就用上述引用来看看机器学习是什么。周志华书中的翻译是<strong>假设用P来评估计算机程序在某任务类T上的性能，若一个程序通过利用经验E在T中任务上获得了性能改善，则我们就说关于T和P，该程序对E进行了学习。</strong></p>
+<p>DL，则是ML的一个分支，也常用DL来指训练神经网络，有时它指的则是特别大规模的神经网络。那我们应该怎么来理解DL呢?按我自己的理解，基于ML的定义。DL就是ML这个经验E是一个由更多的经验相组合而成的一个更为复杂的经验W，且可以让程序的性能得到更大的改善，也就是P值的评估更为高。如此，便可说该程序是进行了DL。</p>
+<h2 id="4、AI-amp-ML-amp-DL-之间的联系"><a href="#4、AI-amp-ML-amp-DL-之间的联系" class="headerlink" title="4、AI &amp; ML &amp; DL 之间的联系"></a>4、AI &amp; ML &amp; DL 之间的联系</h2><p>当把 AI 作为一个产品来看待的时候，<strong>ML 和 DL 是训练出 AI 的核心工具（手段）。</strong>其中，DL 又是 ML 的一个更细化的分支，前者主要解决的问题是将简单的特征组合成更加复杂的特征，并使用这些组合特征解决问题；后者主要解决的问题是，让计算机可以跟人类一样从历史的经验中获取新的知识。</p>
+<p>而，人工智能这个产品，就是一个系统性的工业上的，能够落地到实际领域中，处于一线地去解决一些人类通过直觉可以很快解决的问题，例如：自然语言理解、图像识别、语音识别等。</p>
+<hr>
+<blockquote>
+<p>后记：不记得，以点破面的出处是哪。不过，“给我一个支点我能撬动地球”是阿基米德说的我还是记得，那么在接下来要进行DL的学习之中，我们用以撬动它的支点是什么？请继续耐心的看下去，下一节将要讲述——古老的感知机（Perceptron）。</p>
+</blockquote>
+<p>参考：</p>
 <ul>
-<li>屏幕显示</li>
-<li>事件处理</li>
-<li>绘制图形</li>
-<li>Sprite</li>
-<li>……</li>
+<li>1.《TensorFlow: 实战Google深度学习框架》, 郑泽宇，顾思宇.</li>
+<li>2.《机器学习》, 周志华.</li>
+<li>3.网易云课堂,深度学习微专业, 吴恩达.</li>
+<li>4.Coursera深度学习课程笔记, 黄海广.</li>
+<li>5.WikiPedia.</li>
 </ul>
-<p><strong>Talk is cheap, Show you the code</strong></p>
-<p><em>ps.<a href="https://github.com/brookslq/PythonLearn/tree/master/alien_invasion" target="_blank" rel="noopener">click me to github</a></em></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/python学习实例记录/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -210,7 +221,26 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/逝去的2017，现在的2018/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">逝去的2017，现在的2018</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Deep-Learning-学习磨难记/">
+                <span class="level-item">Deep Learning 学习磨难记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -972,7 +1002,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                    <img src="/images/logo.svg" alt="从感知机到深度学习探路" height="28">
                 
                 </a>
                 <p class="is-size-7">

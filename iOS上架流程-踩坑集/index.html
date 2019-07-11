@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Tag: Python - 木头的进化史</title>
+<title>iOS上架流程&amp;踩坑集 - 木头的进化史</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="科技、iOS、Mac、视频、文博、金融">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木头的进化史">
-<meta property="og:url" content="http://mutongfan.club/tags/Python/index.html">
+    <meta name="description" content="前言：不能上架的APP不是好APP。  上架流程 1、当程序准备好之后，连接上一台真机，执行Product-&amp;gt;Archive。  ps：这里需要注意，在项目General-&amp;gt;Identity-&amp;gt;build每上传一次，就需要+1；版本号（Version）也需要进行适当的更改。  2、执行完第一步之后，会弹出一个新的窗口，选中自己生成的需要上传的APP，点击右边栏目中蓝色的Uplo">
+<meta name="keywords" content="经验整理,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS上架流程&amp;踩坑集">
+<meta property="og:url" content="http://mutongfan.club/iOS上架流程-踩坑集/index.html">
 <meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="前言：不能上架的APP不是好APP。  上架流程 1、当程序准备好之后，连接上一台真机，执行Product-&amp;gt;Archive。  ps：这里需要注意，在项目General-&amp;gt;Identity-&amp;gt;build每上传一次，就需要+1；版本号（Version）也需要进行适当的更改。  2、执行完第一步之后，会弹出一个新的窗口，选中自己生成的需要上传的APP，点击右边栏目中蓝色的Uplo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://mutongfan.club/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-14T10:30:44.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木头的进化史">
+<meta name="twitter:title" content="iOS上架流程&amp;踩坑集">
+<meta name="twitter:description" content="前言：不能上架的APP不是好APP。  上架流程 1、当程序准备好之后，连接上一台真机，执行Product-&amp;gt;Archive。  ps：这里需要注意，在项目General-&amp;gt;Identity-&amp;gt;build每上传一次，就需要+1；版本号（Version）也需要进行适当的更改。  2、执行完第一步之后，会弹出一个新的窗口，选中自己生成的需要上传的APP，点击右边栏目中蓝色的Uplo">
 <meta name="twitter:image" content="http://mutongfan.club/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                <img src="/images/logo.svg" alt="iOS上架流程&amp;踩坑集" height="28">
             
             </a>
         </div>
@@ -136,33 +140,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Python</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-11-27T07:30:20.000Z">2017-11-27</time>
+                <time class="level-item has-text-grey" datetime="2018-01-18T03:06:42.000Z">2018-01-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Python系列/">Python系列</a>
+                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 547 words)
+                    4 minutes read (About 625 words)
                 </span>
                 
                 
@@ -171,36 +164,61 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/python学习实例记录/">python学习实例记录</a>
+                iOS上架流程&amp;踩坑集
             
         </h1>
         <div class="content">
             <blockquote>
-<p>前言：尽管只用对着书本敲代码，都险些中断了这个python实例的练习。终于，完成。</p>
+<p>前言：不能上架的APP不是好APP。</p>
 </blockquote>
-<p><strong>1.游戏</strong></p>
-<p><strong>“打飞机”</strong>这个实例完全是照着书本进行，除了出现过两三次由于粗心抄错了字母这样的情况，整个项目手打下来并没有遇到奇怪的问题。而且，跟着书本进行，也没有不能理解的地方。特别值得一提的是，一定要根着书本的进程敲代码，不要直接下载资源跑源码。</p>
-<p>跟着书本进行，作者会引导着如何重构代码，更能深入的体会到面向对象的编程以及养成良好的编码习惯——注释、命名和抽象方法等。</p>
-<p>而关于游戏的实现，则主要是依赖<code>pygame</code>这个第三方库的使用。</p>
+<h2 id="上架流程"><a href="#上架流程" class="headerlink" title="上架流程"></a>上架流程</h2><blockquote>
+<p><strong>1、</strong>当程序准备好之后，连接上一台真机，执行<strong><code>Product-&gt;Archive</code></strong>。</p>
+</blockquote>
+<p>ps：这里需要注意，在项目<strong>General-&gt;Identity-&gt;build</strong>每上传一次，就需要+1；版本号（Version）也需要进行适当的更改。</p>
+<blockquote>
+<p><strong>2、</strong>执行完第一步之后，会弹出一个新的窗口，选中自己生成的需要上传的APP，点击右边栏目中蓝色的<strong>Upload to App Store …</strong>按钮即可。接下来就是一路的<strong>Next</strong>。</p>
+</blockquote>
+<p>ps:如果一切配置都没问题，就会一路畅通到最后。</p>
+<a id="more"></a>
+
+<blockquote>
+<p><strong>3、</strong>打开<a href="https://itunesconnect.apple.com/" target="_blank" rel="noopener">iTunes管理</a>，登录账号，在<strong>【我的APP】</strong>中选择上架的APP,如果是第一次上架那自然就是创建一个即可。</p>
+</blockquote>
+<p>ps: 目前还没有自己创建过APP，所以并不清楚有什么需要注意的地方。</p>
+<blockquote>
+<p><strong>4、</strong>点进上架的APP控制界面之后，在左侧栏目，需要创建一个新的版本，然后把相关的APP信息填写之后，执行完【2】成功之后邮箱过一会能够收到信息，这时刷新一下界面，【构建版本】就可以选择了。紧接着就是，【保存】-&gt;【提交】。</p>
+</blockquote>
+<p>ps:在提交的时候，会有一些选项，看自己的情况选择即可。目前，公司的项目貌似都是Next即可。</p>
+<blockquote>
+<p>*<em>WAITTING ^_^ GOOD LUCK *</em></p>
+</blockquote>
+<h2 id="坑坑"><a href="#坑坑" class="headerlink" title="坑坑"></a>坑坑</h2><h3 id="坑1"><a href="#坑1" class="headerlink" title="坑1"></a>坑1</h3><blockquote>
+<p>在执行【2】步骤时，出现了<strong>秘钥没有安装的问题。</strong></p>
+</blockquote>
+<p>解决：</p>
 <ul>
-<li>屏幕显示</li>
-<li>事件处理</li>
-<li>绘制图形</li>
-<li>Sprite</li>
-<li>……</li>
+<li>首先，检查一下在【General】中，【Signing】是否勾选了【Automatically】，总之取消勾选。另外就是选择好对应（那就是不报错，不犯红）的dev和dis证书文件（Provisioning Profile）。</li>
+<li>其次，可能需要安装p12文件，这个装的一直都是迷迷糊糊的……反正，这是一个方向吧</li>
 </ul>
-<p><strong>Talk is cheap, Show you the code</strong></p>
-<p><em>ps.<a href="https://github.com/brookslq/PythonLearn/tree/master/alien_invasion" target="_blank" rel="noopener">click me to github</a></em></p>
+<h3 id="坑2"><a href="#坑2" class="headerlink" title="坑2"></a>坑2</h3><blockquote>
+<p>在执行【2】步骤时，出现了需要<strong>输入电脑用户名和密码</strong>以访问钥匙链的一个窗口，却永无休止的提示而不会终止。</p>
+</blockquote>
+<p>解决：</p>
+<ul>
+<li>将证书文件从电脑钥匙链中的【系统】下面移到【登录】就可以解决，感谢一位不知名的群友。</li>
+</ul>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/python学习实例记录/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/iOS/">iOS</a>, <a class="has-link-grey -link" href="/tags/经验整理/">经验整理</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -210,7 +228,26 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Mac安装Dlib库教程（Python）/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Mac安装Dlib库教程</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Mac-OS环境下安装OpenCV(Python)/">
+                <span class="level-item">Mac OS环境下 安装 OpenCV 的坑</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -972,7 +1009,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                    <img src="/images/logo.svg" alt="iOS上架流程&amp;踩坑集" height="28">
                 
                 </a>
                 <p class="is-size-7">
