@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Archives - 木头的进化史</title>
+<title>深度学习之实现人脸识别 - 木头的进化史</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="科技、iOS、Mac、视频、文博、金融">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木头的进化史">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
+<meta name="keywords" content="深度学习,人脸识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之实现人脸识别">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/深度学习之实现人脸识别/index.html">
 <meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-14T10:30:44.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木头的进化史">
+<meta name="twitter:title" content="深度学习之实现人脸识别">
+<meta name="twitter:description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                <img src="/images/logo.svg" alt="深度学习之实现人脸识别" height="28">
             
             </a>
         </div>
@@ -100,7 +104,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -135,242 +139,146 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-20T11:00:09.000Z">2018-01-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1490 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                深度学习之实现人脸识别
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>根据网上的一些资料教程，自己动手实现了人脸识别的程序，<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub地址</a>。</p>
+</blockquote>
+<h2 id="前提概要"><a href="#前提概要" class="headerlink" title="前提概要"></a>前提概要</h2><p>在整个环境配置过程中，比较麻烦的就是<a href="http://flagsgo.xyz/2018/01/10/Mac-OS%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85OpenCV(Python)/" target="_blank" rel="noopener">安装openvc</a>，以及<a href="http://flagsgo.xyz/2018/01/18/Mac%E5%AE%89%E8%A3%85Dlib%E5%BA%93%E6%95%99%E7%A8%8B%EF%BC%88Python%EF%BC%89/" target="_blank" rel="noopener">安装dlib库</a>。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于<a href="http://flagsgo.xyz/2018/01/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/" target="_blank" rel="noopener">卷积网络的简单了解</a>也是一件很有必要的事情，可以有助于抄代码时的理解。</p>
+<a id="more"></a>
+
+<h2 id="人脸识别两部走"><a href="#人脸识别两部走" class="headerlink" title="人脸识别两部走"></a>人脸识别两部走</h2><p>人脸识别可以分为两大部分:<strong>人脸检测</strong>和<strong>人脸验证</strong>。前者，在图像或视频中检测出人脸部分；后者则是对人脸进行验证，查验是否为某某。另外，加上<strong>活体检测</strong>基本上就可以避免在业务环境中，人为的作假是可以极大的降低。</p>
+<p><em>ps:在本例子中，并没有活体检测……</em></p>
+<h3 id="人脸检测"><a href="#人脸检测" class="headerlink" title="人脸检测"></a>人脸检测</h3><p>关于人脸检测，没有亲自从底层去实现或者优化如何检测人脸。而是采用了opencv和dlib进行人脸检测，在使用过程中发现dlib的识别精度更为高一些，而opencv的识别速度更为快，具体体现在：当Mac摄像头打开后，dlib非常卡顿，于是测试了一下，用dlib库的<code>get_frontal_face_detector()</code>检测器检测耗时需要1秒+。不过，当摄像头窗口只是显示一个低像素下的人脸时效果会好很多。</p>
+<p>具体代码可以看<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub</a>，注释都还是抄的比较详尽的，切记<strong>先看readme</strong>。此处只说说几个需要注意的地方</p>
+<ul>
+<li>获取Mac摄像头，<code>capture = cv2.VideoCapture(0)</code>参数是<strong>0</strong><br>，有的资料是1或其他，反正我测试之后都是不行。</li>
+<li>opencv的预置模型是存成了<strong>xml文件</strong>在安装opencv中的一个文件夹下，我这里提取出了自己测试的几个模型放在了**face_opencv_model文件夹之中。而dlib库则是函数式的调用即可。另外，opencv和dlib都不仅仅可以识别人脸，还有一些人脸特征部分也是有预置模型，dlib更是有着人脸特征点的提取。</li>
+</ul>
+<p>尽管没有从底层实现人脸检测，不过根据查阅的资料，隐约还记得一个向量相关的概念，暂做记录以备理解。不对之处，敬请指正。</p>
+<blockquote>
+<p>用向量表示了整个图像，如此一来，通过向量的走向，是可以看出一个人脸的模子的。</p>
+</blockquote>
+<p>在具体代码中，主要是做了通过Mac打开摄像头，截取了自己的人脸照片作为数据集。以及，在训练模型之后，打开摄像头，预测视频中的人脸是否为自己。</p>
+<h3 id="人脸验证"><a href="#人脸验证" class="headerlink" title="人脸验证"></a>人脸验证</h3><p>人脸验证，主要是用到了深度学习中的卷积神经网络。简单的说下，直接用深度神经网络是不大适合的，会耗费过多的运算算力。关于卷积神经网络，具体的还是可以看看之前的<a href="http://flagsgo.xyz/2018/01/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/" target="_blank" rel="noopener">博文</a>。</p>
+<p>在代码中，主要是用Keras来搭建模型，以及训练，保存，预测引用。Keras是在TensorFlow之上的又一个框架。非常棒的一点是，它有<a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文版的API文档</a>，而且API设计的更为人性化易于理解。</p>
+<p>根据网上教程示例，敲完之后总结如下：</p>
+<ul>
+<li>模型不清楚是按照什么理论设计的……反正，这本身就是个玄学。虽然训练效果是精准度95%左右吧，可是在识别过程中还是会存在超过想象的误差。<strong>模型的设计</strong>，真的不知道该怎么有迹可循。反正，我是直接照搬的博主的模型。</li>
+<li>其实在最开始，是通过吴恩达课程练习了人脸识别，不过课程练习没有加入视频和人脸检测，但是用了迁移学习。不过迁移学习相关的代码又都是已经给好了……</li>
+<li><strong>整体上来说，本例中的人脸识别，除了网络用成了卷积神经网络，模型用了某位博主的。依然是深度学习中——对标签数据，通过前向传播再反向传播，梯度递减权重更新，设置学习率迭代数，获得一个模型参数然后加以应用，如是这般的一个套路。</strong></li>
+</ul>
+<blockquote>
+<p>具体的代码，依然是看<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub</a>，毕竟我抄的注释和自己理解的注释还是比较详尽的。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>后记：</strong> 我知道自己抄的代码也好，还是理解的一些理论肯定有不少不足的地方。希望有朋友如果看了之后，可以指点一番，也欢迎一起交流。可以在博客上通过邮件联系我，谢谢！</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/人脸识别/">人脸识别</a>, <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:55.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Moya初体验/" class="has-link-black-ter is-size-6">Moya初体验</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:37.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Swift通过桥接文件使用OC/" class="has-link-black-ter is-size-6">Swift通过桥接文件使用OC</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-20T11:00:09.000Z">2018-01-20</time>
-                        <a href="/2018/01/20/深度学习之实现人脸识别/" class="has-link-black-ter is-size-6">深度学习之实现人脸识别</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T07:18:25.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/深度学习之卷积神经网络（CNN）/" class="has-link-black-ter is-size-6">深度学习之卷积神经网络（CNN）</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:07:14.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/Mac安装Dlib库教程（Python）/" class="has-link-black-ter is-size-6">Mac安装Dlib库教程</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:06:42.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/iOS上架流程-踩坑集/" class="has-link-black-ter is-size-6">iOS上架流程&amp;踩坑集</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-10T07:11:29.000Z">2018-01-10</time>
-                        <a href="/2018/01/10/Mac-OS环境下安装OpenCV(Python)/" class="has-link-black-ter is-size-6">Mac OS环境下 安装 OpenCV 的坑</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-03T12:57:25.000Z">2018-01-03</time>
-                        <a href="/2018/01/03/逝去的2017，现在的2018/" class="has-link-black-ter is-size-6">逝去的2017，现在的2018</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/记录/">记录</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2017
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-29T00:41:50.000Z">2017-12-29</time>
-                        <a href="/2017/12/29/从感知机到深度学习探路-V0/" class="has-link-black-ter is-size-6">从感知机到深度学习探路</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-19T13:22:15.000Z">2017-12-19</time>
-                        <a href="/2017/12/19/Deep-Learning-学习磨难记/" class="has-link-black-ter is-size-6">Deep Learning 学习磨难记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/0/">Préc</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/02/24/Swift通过桥接文件使用OC/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Swift通过桥接文件使用OC</span>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">Suiv</a>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/18/深度学习之卷积神经网络（CNN）/">
+                <span class="level-item">深度学习之卷积神经网络（CNN）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -1148,7 +1056,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                    <img src="/images/logo.svg" alt="深度学习之实现人脸识别" height="28">
                 
                 </a>
                 <p class="is-size-7">

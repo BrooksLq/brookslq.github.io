@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Archives - 木头的进化史</title>
+<title>深度学习之卷积神经网络（CNN） - 木头的进化史</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="科技、iOS、Mac、视频、文博、金融">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木头的进化史">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="前言：DeepLearning的学习之旅已经从感知机到逻辑回归，再经过了神经网络和深度神经网络，终于来到了对卷积神经网络的学习。以下内容，是以人脸识别为例进行实现的记录。 认识卷积神经网络卷积神经网络，刚知道这六个字的时候，脑子里是一片空白——完全不知道它能做些什么。想要对其一窥究竟，我们得从以下几个名词开始了解它：  卷积（Convolutional） 填充 (padding) 步长 (stri">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之卷积神经网络（CNN）">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/深度学习之卷积神经网络（CNN）/index.html">
 <meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="前言：DeepLearning的学习之旅已经从感知机到逻辑回归，再经过了神经网络和深度神经网络，终于来到了对卷积神经网络的学习。以下内容，是以人脸识别为例进行实现的记录。 认识卷积神经网络卷积神经网络，刚知道这六个字的时候，脑子里是一片空白——完全不知道它能做些什么。想要对其一窥究竟，我们得从以下几个名词开始了解它：  卷积（Convolutional） 填充 (padding) 步长 (stri">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-14T10:30:44.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木头的进化史">
+<meta name="twitter:title" content="深度学习之卷积神经网络（CNN）">
+<meta name="twitter:description" content="前言：DeepLearning的学习之旅已经从感知机到逻辑回归，再经过了神经网络和深度神经网络，终于来到了对卷积神经网络的学习。以下内容，是以人脸识别为例进行实现的记录。 认识卷积神经网络卷积神经网络，刚知道这六个字的时候，脑子里是一片空白——完全不知道它能做些什么。想要对其一窥究竟，我们得从以下几个名词开始了解它：  卷积（Convolutional） 填充 (padding) 步长 (stri">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                <img src="/images/logo.svg" alt="深度学习之卷积神经网络（CNN）" height="28">
             
             </a>
         </div>
@@ -100,7 +104,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -135,242 +139,168 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-18T07:18:25.000Z">2018-01-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 minutes read (About 2023 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                深度学习之卷积神经网络（CNN）
+            
+        </h1>
+        <div class="content">
+            <p>前言：DeepLearning的学习之旅已经从感知机到逻辑回归，再经过了神经网络和深度神经网络，终于来到了对卷积神经网络的学习。以下内容，是以人脸识别为例进行实现的记录。</p>
+<h2 id="认识卷积神经网络"><a href="#认识卷积神经网络" class="headerlink" title="认识卷积神经网络"></a>认识卷积神经网络</h2><p>卷积神经网络，刚知道这六个字的时候，脑子里是一片空白——完全不知道它能做些什么。想要对其一窥究竟，我们得从以下几个名词开始了解它：</p>
+<ul>
+<li>卷积（Convolutional）</li>
+<li>填充 (padding)</li>
+<li>步长 (stride)</li>
+<li>池化 (pooling)</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="卷积（Convolutional）"><a href="#卷积（Convolutional）" class="headerlink" title="卷积（Convolutional）"></a>卷积（Convolutional）</h3><p> 卷积，是一种运算方式，这便是我目前对它最直观的感觉。以一张图像[A]——5×5的一个二维矩阵，0~255的数值取值为例，对它进行<strong>卷积运算</strong>。此时，以一个3×3的二维矩阵[B]，矩阵的值则需要根据希望通过运算之后得到什么特征而设置。</p>
+<p> 将[B]的左上角与[A]的左上角重合，重合区域的值对应相乘再相加会得到一个新的值a，a则是一个新矩阵左上角的值。紧接着，矩阵[B]平移一个单元，再次计算得到值b。再继续向右移动，此时[A]&amp;[B]最右边刚好重合，同样计算得到值c。此时，新的矩阵，就得到了第一行的所有值[a b c]。接下来计算的时候，便是要将矩阵[B]向下平移一行，并继续从最左边开始直到矩阵[A]&amp;[B]最下边和最右边同时重合，则结束了此次卷积运算并得到了一个新的3×3的矩阵[C]。用公式表示：</p>
+<blockquote>
+<p>[A] * [B] = [C]</p>
+</blockquote>
+<p> <img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/cnn/cnn%E8%AE%A1%E7%AE%97%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt><br> <em>ps：偷懒没有把[C]所有值都计算……</em></p>
+<h3 id="填充（padding）"><a href="#填充（padding）" class="headerlink" title="填充（padding）"></a>填充（padding）</h3><p> 通过上一段的卷积运算，可以发现最终能够把一个5×5的矩阵[A]通过一个3×3的矩阵[B]<em>（过滤器）</em>进行卷积运算之后得到新的3×3的矩阵[C]。会发现，经过这样的计算之后，矩阵[A]缩水了，而且这个过程中，有的数值参与的运算多，有的少，这必然也造成了一些边缘信息的丢失。<strong>所以，为了保留更多的信息，以及防止卷积不断进行矩阵不断缩小</strong>。可以对矩阵[A]进行填充，即在原有的基础上，给它的外围再裹上一层使之成为6×6的矩阵，最外围的一层都是0。这样再进行卷积运算之后，得到的新矩阵将依然是5×5。</p>
+<p> 至于填充的层数，根据自己的选择进行，可填n层，也可不填。</p>
+<h3 id="步长（stride）"><a href="#步长（stride）" class="headerlink" title="步长（stride）"></a>步长（stride）</h3><p> 在进行卷积运算时，<strong>矩阵[B]每次都是向右移动一个单位，这一个单位也就是指步长为一</strong>。可以清楚的认识到，步长的设置，将影响到矩阵移动的速度，以及对特征的提取。当步长为2时，每次向右移动都是两个单位，向下移动也是两个单位。</p>
+<blockquote>
+<p>商不是一个整数怎么办?在这种情况下，我们向下 取整。⌊ ⌋ 这是向下取整的符号，这也叫做对 z 进行地板除(floor)，这意味着 z 向下取整到 最近的整数。这个原则实现的方式是，你只在蓝框完全包括在图像或填充完的图像内部时， 才对它进行运算。如果有任意一个蓝框移动到了外面，那你就不要进行相乘操作，这是一个 惯例。你的 3×3 的过滤器必须完全处于图像中或者填充之后的图像区域内才输出相应结果，这就是惯例。因此正确计算输出维度的方法是向下取整</p>
+</blockquote>
+<h3 id="池化（pooling）"><a href="#池化（pooling）" class="headerlink" title="池化（pooling）"></a>池化（pooling）</h3><p> 池化，又是另外一种运算。一般分为两种，一是最大值池化，一是平均值池化。<em>（仍然以上文提到的三个矩阵[A]、[B]、[C]为例）</em></p>
+<p> <strong>最大值池化：</strong>当矩阵[B]重在矩阵[A]上面时，选取其中的最大值，将其提出作为新矩阵[C]的第一个值，依次进行。</p>
+<p> <strong>平均值池化：</strong>计算过程类似，只是这次提取的是范围类矩阵[A]的数值相加后求出的平均值，以该值作为矩阵[C]的值。</p>
+<blockquote>
+<p>池化层用来缩减模型的大小，提高计算速度，同时提高 所提取特征的鲁棒性。</p>
+</blockquote>
+<h2 id="卷积网络如何进行学习"><a href="#卷积网络如何进行学习" class="headerlink" title="卷积网络如何进行学习"></a>卷积网络如何进行学习</h2><p>鉴于自己的数学水平有限，对其公式并不做具体展开阐述。详情推荐<a href="https://zybuluo.com/hanbingtao/note/485480" target="_blank" rel="noopener">博文</a>。</p>
+<blockquote>
+<p>本质上依然是前向传播，然后反向传播，梯度递减，更新权重<em>（理解为此处的过滤器，不知道是否有误）</em>。</p>
+</blockquote>
+<p>另外，在使用框架如：TensorFlow、Keras、Pytorch时，都是会有封装好的方法，传入相应的参数直接使用即可得到公式推导的结果，这样可以很好的帮助到理解了相关理论，但是数学推导能力薄弱的自己。</p>
+<p>再次以图像举例，一张图像一般是RGB三通道，所以矩阵[A]，就会是一个三维度的5×5矩阵，这样过滤器也需要是三维度，不过，最后得到的值还是依然为一个维度。而这里，就得稍作提醒，不同的框架下，一般通道数这个参数位置或前或后，不一致。</p>
+<blockquote>
+<p>关于上段的一些补充：</p>
+<ul>
+<li>输入矩阵的通道数和过滤器的通道数一定相同，过滤器的长宽可以不同。</li>
+<li>过滤器与输入矩阵重合后对应数值相乘再相加，所以最终的输出是一个一维的矩阵。</li>
+<li>如果，过滤器的数目增加，有n个，则最终的输出是一个n维的矩阵。</li>
+</ul>
+</blockquote>
+<h2 id="为什么使用卷积网络"><a href="#为什么使用卷积网络" class="headerlink" title="为什么使用卷积网络"></a>为什么使用卷积网络</h2><p>卷积网络因其<strong>参数共享&amp;稀疏连接</strong>这两个特性，可以减少参数，以便我们用更小的训练集进行训练，防止过度拟合，并能够节省计算消耗，缩短计算时间。</p>
+<ol>
+<li>参数共享：“特征检测如垂直边缘 检测<strong>如果适用于图片的某个区域</strong>，那么它<strong>也可能适用于图片的其他区域</strong>。”</li>
+<li>稀疏连接：“输出值只与过滤器范围内的参数有关，与其他无关，不会受影响。”</li>
+</ol>
+<blockquote>
+<ul>
+<li><strong>Parameter sharing:</strong> A feature detector(such as a vertical edge detector) that`s useful in one part of the image is probably useful in another part of the image.</li>
+<li>*<em>Sparsity of connections: *</em>In each layer, each output value depends only on a samll number of inputs.</li>
+</ul>
+</blockquote>
+<p>稍稍想想，如果不用卷积，在真是情况下对一张图片进行全连接网络深度学习，那这个参数就是极大的，特别在深度不断加深且照片数目增加的情况下，将极大的占据计算资源。所以，卷积神经网络的使用有其必要性。</p>
+<hr>
+<p>参考：<br>1、<a href="https://zybuluo.com/hanbingtao/note/485480" target="_blank" rel="noopener">零基础入门深度学习(4)-卷积神经网络</a><br>2、网易云课堂,深度学习微专业, 吴恩达.<br>3、Coursera深度学习课程笔记, 黄海广.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:55.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Moya初体验/" class="has-link-black-ter is-size-6">Moya初体验</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:37.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Swift通过桥接文件使用OC/" class="has-link-black-ter is-size-6">Swift通过桥接文件使用OC</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-20T11:00:09.000Z">2018-01-20</time>
-                        <a href="/2018/01/20/深度学习之实现人脸识别/" class="has-link-black-ter is-size-6">深度学习之实现人脸识别</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T07:18:25.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/深度学习之卷积神经网络（CNN）/" class="has-link-black-ter is-size-6">深度学习之卷积神经网络（CNN）</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:07:14.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/Mac安装Dlib库教程（Python）/" class="has-link-black-ter is-size-6">Mac安装Dlib库教程</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:06:42.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/iOS上架流程-踩坑集/" class="has-link-black-ter is-size-6">iOS上架流程&amp;踩坑集</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-10T07:11:29.000Z">2018-01-10</time>
-                        <a href="/2018/01/10/Mac-OS环境下安装OpenCV(Python)/" class="has-link-black-ter is-size-6">Mac OS环境下 安装 OpenCV 的坑</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-03T12:57:25.000Z">2018-01-03</time>
-                        <a href="/2018/01/03/逝去的2017，现在的2018/" class="has-link-black-ter is-size-6">逝去的2017，现在的2018</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/记录/">记录</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2017
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-29T00:41:50.000Z">2017-12-29</time>
-                        <a href="/2017/12/29/从感知机到深度学习探路-V0/" class="has-link-black-ter is-size-6">从感知机到深度学习探路</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-19T13:22:15.000Z">2017-12-19</time>
-                        <a href="/2017/12/19/Deep-Learning-学习磨难记/" class="has-link-black-ter is-size-6">Deep Learning 学习磨难记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/0/">Préc</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/01/20/深度学习之实现人脸识别/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">深度学习之实现人脸识别</span>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">Suiv</a>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/18/Mac安装Dlib库教程（Python）/">
+                <span class="level-item">Mac安装Dlib库教程</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -1148,7 +1078,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                    <img src="/images/logo.svg" alt="深度学习之卷积神经网络（CNN）" height="28">
                 
                 </a>
                 <p class="is-size-7">

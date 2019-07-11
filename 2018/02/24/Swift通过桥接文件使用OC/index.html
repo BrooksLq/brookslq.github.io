@@ -2,20 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Archives - 木头的进化史</title>
+<title>Swift通过桥接文件使用OC - 木头的进化史</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="科技、iOS、Mac、视频、文博、金融">
-<meta property="og:type" content="website">
-<meta property="og:title" content="木头的进化史">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
+<meta name="keywords" content="经验整理,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift通过桥接文件使用OC">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/Swift通过桥接文件使用OC/index.html">
 <meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-14T10:30:44.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="木头的进化史">
+<meta name="twitter:title" content="Swift通过桥接文件使用OC">
+<meta name="twitter:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                <img src="/images/logo.svg" alt="Swift通过桥接文件使用OC" height="28">
             
             </a>
         </div>
@@ -100,7 +104,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -135,242 +139,133 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-02-24T00:18:37.000Z">2018-02-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 428 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Swift通过桥接文件使用OC
+            
+        </h1>
+        <div class="content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用<strong>桥接</strong>的办法直接在Swift中使用。</p>
+<p>桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。</p>
+<a id="more"></a>
+
+<h1 id="进击吧，桥接"><a href="#进击吧，桥接" class="headerlink" title="进击吧，桥接~"></a>进击吧，桥接~</h1><p><strong>1.创建桥接文件</strong></p>
+<blockquote>
+<p>首先，我们导入了OC部分之后，需要新建一个头文件，且，这个头文件的命名为——*<em>项目名-Bridging-Header.h *</em>。</p>
+</blockquote>
+<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/001.png" alt></p>
+<p><strong>2.桥接文件配置</strong></p>
+<blockquote>
+<p>1) 在桥接文件中，import需要使用的oc代码对应的头文件。<code>#import &quot;需要使用的头文件名.h&quot;</code><br>2）在<strong>Build Settings</strong>中，搜索<strong>Objective-C Bridging Header</strong>，出来之后将桥接文件的路径填入即可。</p>
+</blockquote>
+<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/002.png" alt></p>
+<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/003.png" alt></p>
+<p><strong>3.去用就好啦</strong></p>
+<blockquote>
+<p>是的，现在就可以直接使用了。没啥好说的……</p>
+</blockquote>
+<h1 id="番外引用篇——添加第三方库（SDK）"><a href="#番外引用篇——添加第三方库（SDK）" class="headerlink" title="番外引用篇——添加第三方库（SDK）"></a>番外引用篇——添加第三方库（SDK）</h1><p>关于如何制作Framework以及使用，其实航哥的三篇文章很是详尽，就不多说，可以<a href="http://www.hangge.com/blog/cache/detail_1425.html" target="_blank" rel="noopener">点这里看看</a>。</p>
+<p>库，又分成了静态库和动态库两种，<a href="https://www.jianshu.com/p/42891fb90304" target="_blank" rel="noopener">这篇文章讲得就不错</a>。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/iOS/">iOS</a>, <a class="has-link-grey -link" href="/tags/经验整理/">经验整理</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:55.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Moya初体验/" class="has-link-black-ter is-size-6">Moya初体验</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-02-24T00:18:37.000Z">2018-02-24</time>
-                        <a href="/2018/02/24/Swift通过桥接文件使用OC/" class="has-link-black-ter is-size-6">Swift通过桥接文件使用OC</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-20T11:00:09.000Z">2018-01-20</time>
-                        <a href="/2018/01/20/深度学习之实现人脸识别/" class="has-link-black-ter is-size-6">深度学习之实现人脸识别</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T07:18:25.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/深度学习之卷积神经网络（CNN）/" class="has-link-black-ter is-size-6">深度学习之卷积神经网络（CNN）</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:07:14.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/Mac安装Dlib库教程（Python）/" class="has-link-black-ter is-size-6">Mac安装Dlib库教程</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T03:06:42.000Z">2018-01-18</time>
-                        <a href="/2018/01/18/iOS上架流程-踩坑集/" class="has-link-black-ter is-size-6">iOS上架流程&amp;踩坑集</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/iOS系列/">iOS系列</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-10T07:11:29.000Z">2018-01-10</time>
-                        <a href="/2018/01/10/Mac-OS环境下安装OpenCV(Python)/" class="has-link-black-ter is-size-6">Mac OS环境下 安装 OpenCV 的坑</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-03T12:57:25.000Z">2018-01-03</time>
-                        <a href="/2018/01/03/逝去的2017，现在的2018/" class="has-link-black-ter is-size-6">逝去的2017，现在的2018</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/记录/">记录</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2017
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-29T00:41:50.000Z">2017-12-29</time>
-                        <a href="/2017/12/29/从感知机到深度学习探路-V0/" class="has-link-black-ter is-size-6">从感知机到深度学习探路</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-19T13:22:15.000Z">2017-12-19</time>
-                        <a href="/2017/12/19/Deep-Learning-学习磨难记/" class="has-link-black-ter is-size-6">Deep Learning 学习磨难记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/0/">Préc</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/02/24/Moya初体验/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Moya初体验</span>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">Suiv</a>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/20/深度学习之实现人脸识别/">
+                <span class="level-item">深度学习之实现人脸识别</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -1148,7 +1043,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="木头的进化史" height="28">
+                    <img src="/images/logo.svg" alt="Swift通过桥接文件使用OC" height="28">
                 
                 </a>
                 <p class="is-size-7">
