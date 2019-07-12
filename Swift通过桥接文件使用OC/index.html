@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mutongfan.club/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-14T10:30:44.470Z">
+<meta property="og:updated_time" content="2019-07-12T07:43:20.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift通过桥接文件使用OC">
 <meta name="twitter:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
@@ -130,6 +130,10 @@
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -261,6 +265,126 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="木头_Brooks">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        木头_Brooks
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        搬砖程序猿，文博志愿者，野生up主
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>牧马东吴</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                        <!-- 文章 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                        <!-- 分类 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                        <!-- 标签 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://weibo.com/p/1005052292873645/home?from=page_100505&amp;mod=TAB#place" target="_blank">
+                <!-- 关注我 -->
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/brookslq">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/p/1005052292873645/home?from=page_100505&amp;mod=TAB#place">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:854323153@qq.com">
+                
+                <i class="fa fa-envelope"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<!-- <div class="card widget" id="toc"> -->
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#进击吧，桥接">
+        <span class="has-mr-6">2</span>
+        <span>进击吧，桥接~</span>
+        </a></li><li>
+        <a class="is-flex" href="#番外引用篇——添加第三方库（SDK）">
+        <span class="has-mr-6">3</span>
+        <span>番外引用篇——添加第三方库（SDK）</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
