@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>深度学习之实现人脸识别 - 木头的进化史</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
+<meta name="keywords" content="人脸识别,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习之实现人脸识别">
+<meta property="og:url" content="https://mutongfan.club/深度学习之实现人脸识别/index.html">
+<meta property="og:site_name" content="木头的进化史">
+<meta property="og:description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://mutongfan.club/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-12T07:43:02.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习之实现人脸识别">
+<meta name="twitter:description" content="根据网上的一些资料教程，自己动手实现了人脸识别的程序，GitHub地址。  前提概要在整个环境配置过程中，比较麻烦的就是安装openvc，以及安装dlib库。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于卷积网络的简单了解也是一件很有必要的事情，可以有助于抄代码时的理解。">
+<meta name="twitter:image" content="https://mutongfan.club/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/mutou.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"> 
+</head>
+<!-- <body class="is-2-column"> -->
+    <body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/mutoulogo.png" alt="深度学习之实现人脸识别" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="RSS" href="/atom.xml">
+                        
+                        <i class="fa fa-rss"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-20T11:00:09.000Z">2018-01-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1490 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                深度学习之实现人脸识别
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>根据网上的一些资料教程，自己动手实现了人脸识别的程序，<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub地址</a>。</p>
+</blockquote>
+<h2 id="前提概要"><a href="#前提概要" class="headerlink" title="前提概要"></a>前提概要</h2><p>在整个环境配置过程中，比较麻烦的就是<a href="http://flagsgo.xyz/2018/01/10/Mac-OS%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85OpenCV(Python)/" target="_blank" rel="noopener">安装openvc</a>，以及<a href="http://flagsgo.xyz/2018/01/18/Mac%E5%AE%89%E8%A3%85Dlib%E5%BA%93%E6%95%99%E7%A8%8B%EF%BC%88Python%EF%BC%89/" target="_blank" rel="noopener">安装dlib库</a>。当这两个库安装成功，基本上就可以畅通的进行以抄代码为主的学习之旅了。此外，关于<a href="http://flagsgo.xyz/2018/01/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/" target="_blank" rel="noopener">卷积网络的简单了解</a>也是一件很有必要的事情，可以有助于抄代码时的理解。</p>
+<a id="more"></a>
+
+<h2 id="人脸识别两部走"><a href="#人脸识别两部走" class="headerlink" title="人脸识别两部走"></a>人脸识别两部走</h2><p>人脸识别可以分为两大部分:<strong>人脸检测</strong>和<strong>人脸验证</strong>。前者，在图像或视频中检测出人脸部分；后者则是对人脸进行验证，查验是否为某某。另外，加上<strong>活体检测</strong>基本上就可以避免在业务环境中，人为的作假是可以极大的降低。</p>
+<p><em>ps:在本例子中，并没有活体检测……</em></p>
+<h3 id="人脸检测"><a href="#人脸检测" class="headerlink" title="人脸检测"></a>人脸检测</h3><p>关于人脸检测，没有亲自从底层去实现或者优化如何检测人脸。而是采用了opencv和dlib进行人脸检测，在使用过程中发现dlib的识别精度更为高一些，而opencv的识别速度更为快，具体体现在：当Mac摄像头打开后，dlib非常卡顿，于是测试了一下，用dlib库的<code>get_frontal_face_detector()</code>检测器检测耗时需要1秒+。不过，当摄像头窗口只是显示一个低像素下的人脸时效果会好很多。</p>
+<p>具体代码可以看<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub</a>，注释都还是抄的比较详尽的，切记<strong>先看readme</strong>。此处只说说几个需要注意的地方</p>
+<ul>
+<li>获取Mac摄像头，<code>capture = cv2.VideoCapture(0)</code>参数是<strong>0</strong><br>，有的资料是1或其他，反正我测试之后都是不行。</li>
+<li>opencv的预置模型是存成了<strong>xml文件</strong>在安装opencv中的一个文件夹下，我这里提取出了自己测试的几个模型放在了**face_opencv_model文件夹之中。而dlib库则是函数式的调用即可。另外，opencv和dlib都不仅仅可以识别人脸，还有一些人脸特征部分也是有预置模型，dlib更是有着人脸特征点的提取。</li>
+</ul>
+<p>尽管没有从底层实现人脸检测，不过根据查阅的资料，隐约还记得一个向量相关的概念，暂做记录以备理解。不对之处，敬请指正。</p>
+<blockquote>
+<p>用向量表示了整个图像，如此一来，通过向量的走向，是可以看出一个人脸的模子的。</p>
+</blockquote>
+<p>在具体代码中，主要是做了通过Mac打开摄像头，截取了自己的人脸照片作为数据集。以及，在训练模型之后，打开摄像头，预测视频中的人脸是否为自己。</p>
+<h3 id="人脸验证"><a href="#人脸验证" class="headerlink" title="人脸验证"></a>人脸验证</h3><p>人脸验证，主要是用到了深度学习中的卷积神经网络。简单的说下，直接用深度神经网络是不大适合的，会耗费过多的运算算力。关于卷积神经网络，具体的还是可以看看之前的<a href="http://flagsgo.xyz/2018/01/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%EF%BC%89/" target="_blank" rel="noopener">博文</a>。</p>
+<p>在代码中，主要是用Keras来搭建模型，以及训练，保存，预测引用。Keras是在TensorFlow之上的又一个框架。非常棒的一点是，它有<a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文版的API文档</a>，而且API设计的更为人性化易于理解。</p>
+<p>根据网上教程示例，敲完之后总结如下：</p>
+<ul>
+<li>模型不清楚是按照什么理论设计的……反正，这本身就是个玄学。虽然训练效果是精准度95%左右吧，可是在识别过程中还是会存在超过想象的误差。<strong>模型的设计</strong>，真的不知道该怎么有迹可循。反正，我是直接照搬的博主的模型。</li>
+<li>其实在最开始，是通过吴恩达课程练习了人脸识别，不过课程练习没有加入视频和人脸检测，但是用了迁移学习。不过迁移学习相关的代码又都是已经给好了……</li>
+<li><strong>整体上来说，本例中的人脸识别，除了网络用成了卷积神经网络，模型用了某位博主的。依然是深度学习中——对标签数据，通过前向传播再反向传播，梯度递减权重更新，设置学习率迭代数，获得一个模型参数然后加以应用，如是这般的一个套路。</strong></li>
+</ul>
+<blockquote>
+<p>具体的代码，依然是看<a href="https://github.com/brookslq/face_go" target="_blank" rel="noopener">GitHub</a>，毕竟我抄的注释和自己理解的注释还是比较详尽的。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>后记：</strong> 我知道自己抄的代码也好，还是理解的一些理论肯定有不少不足的地方。希望有朋友如果看了之后，可以指点一番，也欢迎一起交流。可以在博客上通过邮件联系我，谢谢！</p>
+</blockquote>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="https://mutongfan.club/深度学习之实现人脸识别/">深度学习之实现人脸识别</a></li>
+            <li><strong>本文作者：</strong><a href="https://mutongfan.club">木头_Brooks</a></li>
+            <li><strong>本文链接：</strong><a href="https://mutongfan.club/深度学习之实现人脸识别/">https://mutongfan.club/深度学习之实现人脸识别/</a></li>
+            <li><strong>发布时间：</strong>2018-01-20</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+            
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/人脸识别/">人脸识别</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Swift通过桥接文件使用OC/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Swift通过桥接文件使用OC</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/深度学习之卷积神经网络（CNN）/">
+                <span class="level-item">深度学习之卷积神经网络（CNN）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<!-- 百度站点推送 -->
+<script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+</script></div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="木头_Brooks">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        木头_Brooks
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        搬砖程序猿，文博志愿者，野生up主
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>牧马东吴</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                        <!-- 文章 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                        <!-- 分类 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                        <!-- 标签 -->
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://weibo.com/p/1005052292873645/home?from=page_100505&amp;mod=TAB#place" target="_blank">
+                <!-- 关注我 -->
+                关注我
+            </a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/brookslq">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/p/1005052292873645/home?from=page_100505&amp;mod=TAB#place">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:854323153@qq.com">
+                
+                <i class="fa fa-envelope"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<!-- <div class="card widget" id="toc"> -->
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#前提概要">
+        <span class="has-mr-6">1</span>
+        <span>前提概要</span>
+        </a></li><li>
+        <a class="is-flex" href="#人脸识别两部走">
+        <span class="has-mr-6">2</span>
+        <span>人脸识别两部走</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#人脸检测">
+        <span class="has-mr-6">2.1</span>
+        <span>人脸检测</span>
+        </a></li><li>
+        <a class="is-flex" href="#人脸验证">
+        <span class="has-mr-6">2.2</span>
+        <span>人脸验证</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/mutoulogo.png" alt="深度学习之实现人脸识别" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 木头_Brooks&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                <!-- 共<span id="busuanzi_value_site_uv">0</span>个访客 -->
+                    本站总访客人数：<span id="busuanzi_value_site_uv">
+                </span>
+                
+                <span id="busuanzi_container_site_pv">
+                    |  本站总访问量次数: <span id="busuanzi_value_site_pv"> 
+                </span>
+
+                
+                </span></span></p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
