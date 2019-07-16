@@ -9,20 +9,20 @@
 
 
 
-    <meta name="description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
-<meta name="keywords" content="经验整理,iOS">
+    <meta name="description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
+<meta name="keywords" content="iOS,经验整理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift通过桥接文件使用OC">
 <meta property="og:url" content="http://mutongfan.club/Swift通过桥接文件使用OC/index.html">
 <meta property="og:site_name" content="木头的进化史">
-<meta property="og:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
+<meta property="og:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://mutongfan.club/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T07:43:20.283Z">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2019/07/03/20/59/abendstimmung-4315445__480.jpg">
+<meta property="og:updated_time" content="2019-07-16T07:52:21.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift通过桥接文件使用OC">
-<meta name="twitter:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。 桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。">
-<meta name="twitter:image" content="http://mutongfan.club/images/og_image.png">
+<meta name="twitter:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2019/07/03/20/59/abendstimmung-4315445__480.jpg">
 
 
 
@@ -149,6 +149,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/07/03/20/59/abendstimmung-4315445__480.jpg" alt="Swift通过桥接文件使用OC">
+        </span>
+    </div>
     
     <div class="card-content article ">
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
@@ -188,9 +194,9 @@
         </h1>
         <div class="content">
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用<strong>桥接</strong>的办法直接在Swift中使用。</p>
-<p>桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。</p>
 <a id="more"></a>
 
+<p>桥接，其实也很简单，就是新建一个头文件，在头文件中引用需要直接使用的类的头文件即可。接下来，进行一个配置，就可以直接在Swift中import，在使用过程中非常玄乎的自己就转成了Swift的形式。</p>
 <h1 id="进击吧，桥接"><a href="#进击吧，桥接" class="headerlink" title="进击吧，桥接~"></a>进击吧，桥接~</h1><p><strong>1.创建桥接文件</strong></p>
 <blockquote>
 <p>首先，我们导入了OC部分之后，需要新建一个头文件，且，这个头文件的命名为——*<em>项目名-Bridging-Header.h *</em>。</p>
@@ -282,7 +288,7 @@
         verify: false,
         app_id: 'Pjy51qMaU0xEPAzgOrawNHVm-gzGzoHsz',
         app_key: '3VMieHQGQu3bXR31M85PS0yC',
-        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        placeholder: 'ヾﾉ≧∀≦)o来啊，跟我说说话呗~'
     });
 </script>
 
@@ -332,7 +338,7 @@
                         <!-- 文章 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -343,7 +349,7 @@
                         <!-- 分类 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>

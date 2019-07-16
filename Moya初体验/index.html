@@ -9,20 +9,20 @@
 
 
 
-    <meta name="description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。  Moya，是一个基于Alamofire更高层网络请求封装抽象层。它定义了一个清晰的网络结构，通过枚举定义不同的请求；可">
+    <meta name="description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。">
 <meta name="keywords" content="iOS,学习轮子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Moya初体验">
 <meta property="og:url" content="http://mutongfan.club/Moya初体验/index.html">
 <meta property="og:site_name" content="木头的进化史">
-<meta property="og:description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。  Moya，是一个基于Alamofire更高层网络请求封装抽象层。它定义了一个清晰的网络结构，通过枚举定义不同的请求；可">
+<meta property="og:description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://mutongfan.club/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T07:46:55.857Z">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2019/07/12/07/23/pool-4332152__480.jpg">
+<meta property="og:updated_time" content="2019-07-16T07:50:18.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Moya初体验">
-<meta name="twitter:description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。  Moya，是一个基于Alamofire更高层网络请求封装抽象层。它定义了一个清晰的网络结构，通过枚举定义不同的请求；可">
-<meta name="twitter:image" content="http://mutongfan.club/images/og_image.png">
+<meta name="twitter:description" content="前言以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2019/07/12/07/23/pool-4332152__480.jpg">
 
 
 
@@ -149,6 +149,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/07/12/07/23/pool-4332152__480.jpg" alt="Moya初体验">
+        </span>
+    </div>
     
     <div class="card-content article ">
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
@@ -188,11 +194,11 @@
         </h1>
         <div class="content">
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>以往在需要进行网络请求时，都是直接使用Alamofire，尽管知道有Moya的存在。但是，出于对未知事物的畏惧心理，并没有尝试去了解并实现一个例子。终于，由于戴老师整理核心库的代码使用了Moya，并且建议自己在下一个项目中也用上，于是才发现——Moya，并没有想想那么恐怖。</p>
+<a id="more"></a>
+
 <blockquote>
 <p><a href="https://github.com/Moya/Moya" target="_blank" rel="noopener">Moya</a>，是一个基于Alamofire更高层网络请求封装抽象层。它定义了一个清晰的网络结构，通过枚举定义不同的请求；可以简单的进行网络单元测试（还未尝试过单元测试）。Moya主页给出了一幅图说明使用了它之后，整个网络请求可以更干净整洁。</p>
 </blockquote>
-<a id="more"></a>
-
 <p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/moya/004.png" alt></p>
 <p><em>ps.做个说明，所实现的例子是对<a href="http://www.hangge.com/blog/cache/detail_1797.html" target="_blank" rel="noopener">航哥提供的教程系列</a>不完全实现。</em></p>
 <h1 id="Moya-来吧！"><a href="#Moya-来吧！" class="headerlink" title="Moya,来吧！"></a>Moya,来吧！</h1><p>简要的说明，Moya会提供一个Provider，我们要做的就是定义我们的Target以初始化自己的Provider，然后在需要进行网络请求的地方直接用即可。是的，就这么简单，没了。</p>
@@ -260,6 +266,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Hexo-Icarus-主题定制记录/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo Icarus 主题定制记录</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/Swift通过桥接文件使用OC/">
@@ -287,7 +300,7 @@
         verify: false,
         app_id: 'Pjy51qMaU0xEPAzgOrawNHVm-gzGzoHsz',
         app_key: '3VMieHQGQu3bXR31M85PS0yC',
-        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        placeholder: 'ヾﾉ≧∀≦)o来啊，跟我说说话呗~'
     });
 </script>
 
@@ -337,7 +350,7 @@
                         <!-- 文章 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -348,7 +361,7 @@
                         <!-- 分类 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>

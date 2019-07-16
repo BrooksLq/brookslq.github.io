@@ -9,19 +9,19 @@
 
 
 
-    <meta name="description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。  1、必要的依赖 dlib安装使用，是需要一些依赖的，亲测，的确是需要的。需要安装的依赖项如下：  opencv(安装可以看这里) openblas &amp;amp; X11(安装参考这里)-  关于dlib的安装，直接引用【SnailTyan】博文中的内容部分：">
+    <meta name="description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。">
 <meta name="keywords" content="环境配置,人脸识别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac安装Dlib库教程">
 <meta property="og:url" content="http://mutongfan.club/Mac安装Dlib库教程（Python）/index.html">
 <meta property="og:site_name" content="木头的进化史">
-<meta property="og:description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。  1、必要的依赖 dlib安装使用，是需要一些依赖的，亲测，的确是需要的。需要安装的依赖项如下：  opencv(安装可以看这里) openblas &amp;amp; X11(安装参考这里)-  关于dlib的安装，直接引用【SnailTyan】博文中的内容部分：">
+<meta property="og:description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mutongfan.club/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T07:43:14.661Z">
+<meta property="og:updated_time" content="2019-07-16T07:54:27.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac安装Dlib库教程">
-<meta name="twitter:description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。  1、必要的依赖 dlib安装使用，是需要一些依赖的，亲测，的确是需要的。需要安装的依赖项如下：  opencv(安装可以看这里) openblas &amp;amp; X11(安装参考这里)-  关于dlib的安装，直接引用【SnailTyan】博文中的内容部分：">
+<meta name="twitter:description" content="前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。">
 <meta name="twitter:image" content="http://mutongfan.club/images/og_image.png">
 
 
@@ -190,14 +190,14 @@
             <blockquote>
 <p>前言：当使用opencv做人脸检测的时候，从一些博文资料中了解到dlib的库貌似检测准确度比opencv高得多。于是，又是一番踩坑。</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="1、必要的依赖"><a href="#1、必要的依赖" class="headerlink" title="1、必要的依赖"></a>1、必要的依赖</h2><p> dlib安装使用，是需要一些依赖的，亲测，的确是需要的。需要安装的依赖项如下：</p>
 <ul>
 <li>opencv(<a href="http://flagsgo.xyz/2018/01/10/Mac-OS%E7%8E%AF%E5%A2%83%E4%B8%8B-%E5%AE%89%E8%A3%85-OpenCV-%E7%9A%84%E5%9D%91/" target="_blank" rel="noopener">安装可以看这里</a>)</li>
 <li>openblas &amp; X11(<a href="http://noahsnail.com/2016/12/10/2016-12-11-Mac%E4%B8%8Bdlib%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">安装参考这里</a>)-</li>
 </ul>
 <p>关于dlib的安装，直接引用【SnailTyan】博文中的内容部分：</p>
-<a id="more"></a>
-
 <figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd dlib/examples</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -DUSE_SSE4_INSTRUCTIONS=ON</span><br><span class="line">cmake --build . --config Release</span><br></pre></td></tr></table></figure>
 
 <h2 id="2、折磨人的坑"><a href="#2、折磨人的坑" class="headerlink" title="2、折磨人的坑"></a>2、折磨人的坑</h2><p>如果按照上面的执行完毕，其实，的确可以直接在终端窗口<code>import</code>成功。但是，当在pycharm中<code>import</code>时却找不到模块。在这个过程中，了解到有可能是因为【环境】问题，安装的dlib不是在当前环境之下。（此处，可以去了解下python的虚拟环境，会对项目版本控制有所帮助。不过目前为止，自己还没有真正去每个项目一个环境来用。）</p>
@@ -286,7 +286,7 @@
         verify: false,
         app_id: 'Pjy51qMaU0xEPAzgOrawNHVm-gzGzoHsz',
         app_key: '3VMieHQGQu3bXR31M85PS0yC',
-        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        placeholder: 'ヾﾉ≧∀≦)o来啊，跟我说说话呗~'
     });
 </script>
 
@@ -336,7 +336,7 @@
                         <!-- 文章 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -347,7 +347,7 @@
                         <!-- 分类 -->
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
