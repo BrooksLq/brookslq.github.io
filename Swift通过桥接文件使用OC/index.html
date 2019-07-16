@@ -10,7 +10,7 @@
 
 
     <meta name="description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
-<meta name="keywords" content="iOS,经验整理">
+<meta name="keywords" content="经验整理,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift通过桥接文件使用OC">
 <meta property="og:url" content="http://mutongfan.club/Swift通过桥接文件使用OC/index.html">
@@ -18,7 +18,7 @@
 <meta property="og:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2019/07/03/20/59/abendstimmung-4315445__480.jpg">
-<meta property="og:updated_time" content="2019-07-16T07:52:21.543Z">
+<meta property="og:updated_time" content="2019-07-16T08:18:10.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift通过桥接文件使用OC">
 <meta name="twitter:description" content="前言在Swift语言开发的过程中，难免会用到一些用OC写的代码，这时候要么耗费一番精力用Swift重写，要么就得使用桥接的办法直接在Swift中使用。">
@@ -175,7 +175,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 428 个字)
+                    3 分钟 读完 (大约 395 个字)
                 </span>
                 
                 
@@ -201,13 +201,10 @@
 <blockquote>
 <p>首先，我们导入了OC部分之后，需要新建一个头文件，且，这个头文件的命名为——*<em>项目名-Bridging-Header.h *</em>。</p>
 </blockquote>
-<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/001.png" alt></p>
 <p><strong>2.桥接文件配置</strong></p>
 <blockquote>
 <p>1) 在桥接文件中，import需要使用的oc代码对应的头文件。<code>#import &quot;需要使用的头文件名.h&quot;</code><br>2）在<strong>Build Settings</strong>中，搜索<strong>Objective-C Bridging Header</strong>，出来之后将桥接文件的路径填入即可。</p>
 </blockquote>
-<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/002.png" alt></p>
-<p><img src="http://7xp6za.com1.z0.glb.clouddn.com/blog/bridging/003.png" alt></p>
 <p><strong>3.去用就好啦</strong></p>
 <blockquote>
 <p>是的，现在就可以直接使用了。没啥好说的……</p>
